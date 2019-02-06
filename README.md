@@ -1,1 +1,1 @@
-metrix-unity-sample
+MetrixSDK-UnitySample
