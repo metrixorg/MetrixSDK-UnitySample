@@ -59,6 +59,7 @@
 ۳.اگر از پروگارد برای ماینیفای کردن اپلیکیشن خود استفاده میکنید تنظیمات زیر را به `Asset/Plugins/Android/proguard-user.txt` پروژه خود اضافه کنید:  
   
 <div dir=ltr>  
+
     #Unity Player
     -keep class com.unity3d.player.** { *; }
 
