@@ -56,7 +56,7 @@
 
 </div>  
 
-۳. آپشن زیر را به `android` فایل `Asset/Plugins/Android/mainTemplate.gradle` اپلیکیشن خود اضافه کنید:
+۳. آپشن زیر را به بلاک `android` فایل `Asset/Plugins/Android/mainTemplate.gradle` اپلیکیشن خود اضافه کنید:
 
 <div dir="ltr">
 
