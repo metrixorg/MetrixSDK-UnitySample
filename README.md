@@ -29,7 +29,7 @@
   
 <h2 id=project_setup> تنظیمات اولیه در پروژه</h2>  
 
-۱. ابتدا  کتابخانه‌ متریکس  را  از [این  لینک](https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.2.0.unitypackage) دانلود  کنید  و  در  پروژه  خود import کنید.
+۱. ابتدا  کتابخانه‌ متریکس  را  از [این  لینک](https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.3.0.unitypackage) دانلود  کنید  و  در  پروژه  خود import کنید.
 
 ۲. سپس  دیپندنسی  های  زیر  راه  به  بلاک dependencies فایل
 
@@ -48,7 +48,7 @@
 
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
 
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.13.1'
 
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
 
@@ -56,7 +56,17 @@
 
 </div>  
 
-۳.اگر از پروگارد برای ماینیفای کردن اپلیکیشن خود استفاده میکنید تنظیمات زیر را به `Asset/Plugins/Android/proguard-user.txt` پروژه خود اضافه کنید:  
+۳. آپشن زیر را به `android` فایل `Asset/Plugins/Android/mainTemplate.gradle` اپلیکیشن خود اضافه کنید:
+
+<div dir="ltr">
+
+    compileOptions {
+        targetCompatibility = "8"
+        sourceCompatibility = "8"
+    }
+</div>
+
+۴.اگر از پروگارد برای ماینیفای کردن اپلیکیشن خود استفاده میکنید تنظیمات زیر را به `Asset/Plugins/Android/proguard-user.txt` پروژه خود اضافه کنید:  
   
 <div dir=ltr>  
 
@@ -123,7 +133,7 @@
 
 </div>  
   
-۴. دسترسی  های  زیر  را  به  فایل `AndroidManifest.xml` موجود  در  فولدر `Plugins/Android` پروژه  خود  اضافه  کنید: 
+۵. دسترسی  های  زیر  را  به  فایل `AndroidManifest.xml` موجود  در  فولدر `Plugins/Android` پروژه  خود  اضافه  کنید: 
   
 <div dir=ltr>  
   
