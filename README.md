@@ -52,7 +52,6 @@
 
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
 
-    implementation 'com.android.support:support-v4:28.0.0'
 
 </div>  
 
