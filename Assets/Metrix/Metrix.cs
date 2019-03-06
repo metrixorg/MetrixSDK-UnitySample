@@ -5,40 +5,32 @@ using System.Collections.Generic;
 
 namespace MetrixSDK {
 
-	public class Metrix
+    public class Metrix
     {
 
-		#if UNITY_ANDROID && !UNITY_EDITOR
-		private static AndroidJavaClass metrix;
-		#endif
+        #if UNITY_ANDROID && !UNITY_EDITOR
+        private static AndroidJavaClass metrix;
+        #endif
       
-		public static void Initialize(string apiKey)
+        public static void Initialize(string apiKey)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-			setJavaObject();
-			metrix.CallStatic("initialize", apiKey);
-            #endif
-        }
-
-        public static void Initialize(string apiKey, string oneSignalAppId)
-        {
-            #if UNITY_ANDROID && !UNITY_EDITOR
-			setJavaObject();
-			metrix.CallStatic("initialize", apiKey, oneSignalAppId);
+            setJavaObject();
+            metrix.CallStatic("initialize", apiKey);
             #endif
         }
 
         private static void setJavaObject()
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-			metrix = new AndroidJavaClass("ir.metrix.sdk.MetrixUnity");
+            metrix = new AndroidJavaClass("ir.metrix.sdk.MetrixUnity");
             #endif
         }
         
         public static void EnableLocationListening()
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-			metrix.CallStatic("enableLocationListening");
+            metrix.CallStatic("enableLocationListening");
             #endif
         }
 
@@ -139,7 +131,7 @@ namespace MetrixSDK {
         public static void NewEvent(string eventName)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-			metrix.CallStatic("newEvent", eventName);
+            metrix.CallStatic("newEvent", eventName);
             #endif
         }
 
@@ -148,7 +140,7 @@ namespace MetrixSDK {
                                     Dictionary<string, object> customMetrics)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("newEvent", eventName, customAttributes, customMetrics);
+            metrix.CallStatic("newEvent", eventName, ConvertDictionaryToMap(customAttributes), ConvertDictionaryToMap(customMetrics));
             #endif
         }
 
@@ -166,14 +158,14 @@ namespace MetrixSDK {
         public static void AddUserAttributes(Dictionary<string, string> userAttrs)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("addUserAttributes", userAttrs);
+            metrix.CallStatic("addUserAttributes", ConvertDictionaryToMap(userAttrs));
             #endif
         }
 
         public static void SetUserMetrics(Dictionary<string, object> userMets)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("setUserMetrics", userMets);
+            metrix.CallStatic("setUserMetrics", ConvertDictionaryToMap(userMets));
             #endif
         }
 
@@ -212,6 +204,76 @@ namespace MetrixSDK {
             #if UNITY_ANDROID && !UNITY_EDITOR
             metrix.CallStatic("setDefaultTracker", trackerToken);
             #endif
+        }
+        private static AndroidJavaObject ConvertDictionaryToMap(IDictionary<string, string> parameters)
+        {
+
+
+            AndroidJavaObject javaMap = new AndroidJavaObject("java.util.HashMap");
+            IntPtr putMethod = AndroidJNIHelper.GetMethodID(
+                javaMap.GetRawClass(), "put",
+                    "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+            object[] args = new object[2];
+            foreach (KeyValuePair<string, string> kvp in parameters)
+            {
+
+                using (AndroidJavaObject k = new AndroidJavaObject(
+                    "java.lang.String", kvp.Key))
+                {
+                    using (AndroidJavaObject v = new AndroidJavaObject(
+                        "java.lang.String", kvp.Value))
+                    {
+                        args[0] = k;
+                        args[1] = v;
+                        AndroidJNI.CallObjectMethod(javaMap.GetRawObject(),
+                                putMethod, AndroidJNIHelper.CreateJNIArgArray(args));
+                    }
+                }
+            }
+
+            return javaMap;
+        }
+
+        private static AndroidJavaObject ConvertDictionaryToMap(IDictionary<string, object> parameters)
+        {
+            AndroidJavaObject javaMap = new AndroidJavaObject("java.util.HashMap");
+            AndroidJavaClass stringClazz = new AndroidJavaClass("java.lang.String");
+            IntPtr putMethod = AndroidJNIHelper.GetMethodID(
+         javaMap.GetRawClass(), "put",
+             "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
+
+            object[] args = new object[2];
+            foreach (KeyValuePair<string, object> kvp in parameters)
+            {
+
+                using (AndroidJavaObject k = new AndroidJavaObject(
+                    "java.lang.String", kvp.Key))
+                {
+                    string type = "java.lang.String";
+                    if (kvp.Value.GetType() == typeof(int))
+                        type = "java.lang.Integer";
+                    else if (kvp.Value.GetType() == typeof(double))
+                        type = "java.lang.Double";
+                    else if (kvp.Value.GetType() == typeof(bool))
+                        type = "java.lang.Boolean";
+                    else if (kvp.Value.GetType() == typeof(long))
+                        type = "java.lang.Long";
+                    else if (kvp.Value.GetType() == typeof(float))
+                        type = "java.lang.Float";
+
+
+                    using (AndroidJavaObject v = new AndroidJavaObject(type, kvp.Value))
+                    {
+                        args[0] = k;
+                        args[1] = v;
+                        AndroidJNI.CallObjectMethod(javaMap.GetRawObject(),
+                                putMethod, AndroidJNIHelper.CreateJNIArgArray(args));
+                    }
+                }
+            }
+
+            return javaMap;
         }
     }
 }
