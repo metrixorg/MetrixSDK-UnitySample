@@ -15,15 +15,13 @@
 <a style="padding-right:2em" href=#setEventMaxCount>۳.۵. تعداد حداکثر ذخیره رویداد در مخزن کتابخانه</a><br>  
 <a style="padding-right:2em" href=#setEventUploadPeriodMillis>۳.۶. بازه زمانی ارسال رویدادها</a><br>  
 <a style="padding-right:2em" href=#setSessionTimeoutMillis>۳.۷. بازه زمانی دلخواه برای نشست‌ها</a><br>  
-<a style="padding-right:2em" href=#setOptOut>۳.۸. دستور عمل نکردن کل کتابخانه</a><br>  
-<a style="padding-right:2em" href=#enableLogging>۳.۹. مدیریت لاگ‌ها</a><br>  
-<a style="padding-right:2em" href=#setLogLevel>۳.۱۰. تعیین LogLevel</a><br>  
-<a style="padding-right:2em" href=#setOffline>۳.۱۱. حالت آفلاین</a><br>  
-<a style="padding-right:2em" href=#setFlushEventsOnClose>۳.۱۲. ارسال همه‌ی رویدادها</a><br>  
-<a style="padding-right:2em" href=#getSessionNum>۳.۱۳. شماره نشست جاری</a><br>  
-<a style="padding-right:2em" href=#newEvent>۳.۱۴. رویداد سفارشی</a><br>  
-<a style="padding-right:2em" href=#setScreenFlowsAutoFill>۳.۱۵. فعال کردن فرآیند نگهداری حرکت کاربر بین صفحات مختلف در اپلیکیشن</a><br>  
-<a style="padding-right:2em" href=#setDefaultTracker>۳.۱۶. مشخص کردن Pre-installed Tracker</a><br>  
+<a style="padding-right:2em" href=#enableLogging>۳.۸. مدیریت لاگ‌ها</a><br>  
+<a style="padding-right:2em" href=#setLogLevel>۳.۹. تعیین LogLevel</a><br>  
+<a style="padding-right:2em" href=#setFlushEventsOnClose>۳.۱۰. ارسال همه‌ی رویدادها</a><br>  
+<a style="padding-right:2em" href=#getSessionNum>۳.۱۱. شماره نشست جاری</a><br>  
+<a style="padding-right:2em" href=#newEvent>۳.۱۲. رویداد سفارشی</a><br>  
+<a style="padding-right:2em" href=#setScreenFlowsAutoFill>۳.۱۳. فعال کردن فرآیند نگهداری حرکت کاربر بین صفحات مختلف در اپلیکیشن</a><br>  
+<a style="padding-right:2em" href=#setDefaultTracker>۳.۱۴. مشخص کردن Pre-installed Tracker</a><br>  
   
   
   
@@ -217,15 +215,7 @@
 </div>  
 (مقدار پیش‌فرض این تابع در کتابخانه ۳۰ دقیقه است.)<br>  
   
-<h3 id=setOptOut>۸. دستور عمل نکردن کل کتابخانه</h3>  
-با استفاده از این تابع می‌توانید به کتابخانه دستور بدهید که هیچ رویدادی را ثبت نکند:<br>  
-<div dir=ltr>  
-  
-    Metrix.SetOptOut(true);  
-</div>  
-(مقدار پیش‌فرض این تابع در کتابخانه false است.)<br>  
-  
-<h3 id=enableLogging>۹. فعال کردن مدیریت لاگ‌ها کتابخانه متریکس</h3>  
+<h3 id=enableLogging>۸. فعال کردن مدیریت لاگ‌ها کتابخانه متریکس</h3>  
 توجه داشته باشید که موقع release اپلیکیشن خود مقدار این تابع را false قرار دهید:<br>  
 <div dir=ltr>  
   
@@ -234,7 +224,7 @@
 (مقدار پیش‌فرض این تابع در کتابخانه true است.)<br>  
   
   
-<h3 id=setLogLevel>۱۰. تعیین LogLevel</h3>
+<h3 id=setLogLevel>۹. تعیین LogLevel</h3>
 
 با استفاده از این تابع می‌توانید مشخص کنید که چه سطحی از لاگ‌ها در `logcat` چاپ شود، به عنوان مثال دستور زیر همه‌ی سطوح لاگ‌ها به جز `VERBOSE` در `logcat` نمایش داده شود:<br>
 
@@ -256,15 +246,8 @@
     ASSERT = 7;
 
 </div>
-<h3 id=setOffline>۱۱. روشن کردن حالت آفلاین کتابخانه</h3>  
-با استفاده از این تابع کتابخانه رویدادها را برای سرور ارسال نمی‌کند اما همچنان رویدادها را با تنظیمات دلخواه شما ثبت می‌کند:<br>  
-<div dir=ltr>  
-  
-    Metrix.SetOffline(true);  
-</div>  
-(مقدار پیش‌فرض این تابع در کتابخانه false است.)<br>  
-  
-<h3 id=setFlushEventsOnClose>۱۲. فعال یا غیرفعال کردن ارسال همه‌ی رویدادها</h3>  
+
+<h3 id=setFlushEventsOnClose>۱۰. فعال یا غیرفعال کردن ارسال همه‌ی رویدادها</h3>  
 با استفاده از این تابع می‌توانید مشخص کنید که زمانی که اپلیکیشن بسته می‌شود همه رویدادهای ذخیره شده در کتابخانه ارسال شود یا نشود:<br>  
 <div dir=ltr>  
   
@@ -272,14 +255,14 @@
 </div>  
 (مقدار پیش‌فرض این تابع در کتابخانه true است.)<br>  
   
-<h3 id=getSessionNum>۱۳. اطلاع یافتن از شماره نشست جاری</h3>  
+<h3 id=getSessionNum>۱۱. اطلاع یافتن از شماره نشست جاری</h3>  
 با استفاده از این تابع می‌توانید از شماره نشست (session)  جاری اطلاع پیدا کنید:<br>  
 <div dir=ltr>  
   
     Metrix.GetSessionNum();  
 </div>  
   
-<h3 id=newEvent>۱۴. ساختن یک رویداد سفارشی</h3>  
+<h3 id=newEvent>۱۲. ساختن یک رویداد سفارشی</h3>  
 با استفاده از این تابع می‌توانید یک رویداد سفارشی بسازید. برای این کار شما در ابتدا باید در داشبورد متریکس از قسمت مدیریت رخدادها، رخداد موردنظر خود را ثبت کنید و نامک (slug) آن را بعنوان نام رخداد در sdk استفاده کنید.<br>  
 این تابع را به دو صورت می‌توانید صدا بزنید:<br>  
 ۱. یک رویداد سفارشی که فقط یک اسم مشخص دارد بسازید:<br>  
@@ -291,7 +274,7 @@
   
 ورودی این تابع از جنس String است<br>  
 
-<h3 id=setScreenFlowsAutoFill>۱۵. نگهداری حرکات کاربر در صفحات مختلف در اپلیکیشن</h3>
+<h3 id=setScreenFlowsAutoFill>۱۳. نگهداری حرکات کاربر در صفحات مختلف در اپلیکیشن</h3>
 
 با اضافه کردن تابع زیر صفحات خود میتوانید از حرکت کاربر بین صفحات اطلاع پیدا کنید:<br>
 <div dir=ltr>
@@ -299,7 +282,7 @@
     Metrix.ScreenDisplayed("First Screen");
 </div>
   
-<h3 id=setDefaultTracker>۱۶. مشخص کردن Pre-installed Tracker</h3>  
+<h3 id=setDefaultTracker>۱۴. مشخص کردن Pre-installed Tracker</h3>  
   
 با استفاده از این تابع می‌توانید با استفاده از یک `trackerToken` که از پنل آن را دریافت می‌کنید، برای همه‌ی رویدادها یک `tracker` پیش‌فرض را قرار دهید:<br>  
 <div dir=ltr>  
