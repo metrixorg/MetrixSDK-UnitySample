@@ -31,6 +31,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
     implementation 'com.android.installreferrer:installreferrer:1.0'
+    implementation 'com.google.android.gms:play-services-analytics:16.0.7'
+
 **DEPS**}
 
 android {
