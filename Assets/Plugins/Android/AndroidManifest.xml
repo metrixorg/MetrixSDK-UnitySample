@@ -13,6 +13,8 @@
       </intent-filter>
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
     </activity>
+
+    
     <receiver
         android:name="ir.metrix.sdk.MetrixReferrerReceiver"
         android:permission="android.permission.INSTALL_PACKAGES"

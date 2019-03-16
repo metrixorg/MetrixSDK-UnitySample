@@ -5,32 +5,32 @@ using System.Collections.Generic;
 
 namespace MetrixSDK {
 
-    public class Metrix
+	public class Metrix
     {
 
-        #if UNITY_ANDROID && !UNITY_EDITOR
-        private static AndroidJavaClass metrix;
-        #endif
+		#if UNITY_ANDROID && !UNITY_EDITOR
+		private static AndroidJavaClass metrix;
+		#endif
       
-        public static void Initialize(string apiKey)
+		public static void Initialize(string apiKey)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            setJavaObject();
-            metrix.CallStatic("initialize", apiKey);
+			setJavaObject();
+			metrix.CallStatic("initialize", apiKey);
             #endif
         }
 
         private static void setJavaObject()
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix = new AndroidJavaClass("ir.metrix.sdk.MetrixUnity");
+			metrix = new AndroidJavaClass("ir.metrix.sdk.MetrixUnity");
             #endif
         }
         
         public static void EnableLocationListening()
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("enableLocationListening");
+			metrix.CallStatic("enableLocationListening");
             #endif
         }
 
@@ -76,20 +76,6 @@ namespace MetrixSDK {
             #endif
         }
 
-        public static void SetOptOut(bool optOut)
-        {
-            #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("setOptOut", optOut);
-            #endif
-        }
-
-        public static void IsOptedOut()
-        {
-            #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("isOptedOut");
-            #endif
-        }
-
         public static void EnableLogging(bool enableLogging)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
@@ -104,12 +90,6 @@ namespace MetrixSDK {
             #endif
         }
 
-        public static void SetOffline(bool offline)
-        {
-            #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("setOffline", offline);
-            #endif
-        }
 
         public static void SetFlushEventsOnClose(bool flushEventsOnClose)
         {
@@ -131,7 +111,7 @@ namespace MetrixSDK {
         public static void NewEvent(string eventName)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("newEvent", eventName);
+			metrix.CallStatic("newEvent", eventName);
             #endif
         }
 
