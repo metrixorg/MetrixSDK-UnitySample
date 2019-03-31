@@ -28,7 +28,7 @@
   
 <h2 id=project_setup> تنظیمات اولیه در پروژه</h2>  
 
-۱. ابتدا  کتابخانه‌ متریکس  را  از [این  لینک](https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.8.3.unitypackage) دانلود  کنید  و  در  پروژه  خود import کنید.
+۱. ابتدا  کتابخانه‌ متریکس  را  از [این  لینک](https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.8.5.unitypackage) دانلود  کنید  و  در  پروژه  خود import کنید.
 
 ۲. سپس  دیپندنسی  های  زیر  راه  به  بلاک dependencies فایل
 
@@ -133,6 +133,7 @@
     
     #gms
     -keep class com.google.android.gms.** { *; }
+    -dontwarn android.content.pm.PackageInfo
 
 </div>  
   
