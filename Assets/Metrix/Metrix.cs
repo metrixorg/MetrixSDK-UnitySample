@@ -123,15 +123,47 @@ namespace MetrixSDK {
             metrix.CallStatic("newEvent", eventName, ConvertDictionaryToMap(customAttributes), ConvertDictionaryToMap(customMetrics));
             #endif
         }
+        public static void NewRevenue(string slug, double revenue){
 
-        public static void NewBusinessEvent(string itemType,
-                                            string itemId,
-                                            string cartType,
-                                            string transactionNum,
-                                            int amount)
-        {
             #if UNITY_ANDROID && !UNITY_EDITOR
-            metrix.CallStatic("newBusinessEvent", itemType, itemId, cartType, transactionNum, amount);
+            metrix.CallStatic("newRevenueSimple", slug, revenue);
+            #endif
+        }
+
+
+        public static void NewRevenue(string slug, double revenue,int currency){
+
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            string cr = null;
+            if(currency == 0) {
+                cr = "IRR";
+            } else if(currency == 1) {
+                cr = "USD";
+            } else if(currency == 2) {
+                cr = "EUR";
+            }
+            metrix.CallStatic("newRevenueCurrency", slug, revenue, cr);
+            #endif
+        }
+
+        public static void NewRevenue(string slug,double revenue,string orderId){
+
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            metrix.CallStatic("newRevenueOrderId", slug, revenue, orderId);
+            #endif
+        }
+        public static void NewRevenue(string slug,double revenue,int currency,string orderId){
+
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            string cr = null;
+            if(currency == 0) {
+                cr = "IRR";
+            } else if(currency == 1) {
+                cr = "USD";
+            } else if(currency == 2) {
+                cr = "EUR";
+            }
+            metrix.CallStatic("newRevenueFull", slug, revenue, cr, orderId);
             #endif
         }
 

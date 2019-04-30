@@ -19,6 +19,7 @@ public class Main : MonoBehaviour {
 	public void SendEvent()
 	{
 		Metrix.NewEvent("New Event");
+		Metrix.NewRevenue("buy",13.2,1,"44");
 		eventText.text = "Event Sent";
 	}
 }
