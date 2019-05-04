@@ -20,9 +20,10 @@
 <a style="padding-right:2em" href=#setLogLevel>۴.۹. تعیین LogLevel</a><br>  
 <a style="padding-right:2em" href=#setFlushEventsOnClose>۴.۱۰. ارسال همه‌ی رویدادها</a><br>  
 <a style="padding-right:2em" href=#getSessionNum>۴.۱۱. شماره نشست جاری</a><br>  
-<a style="padding-right:2em" href=#newEvent>۴.۱۲. رویداد سفارشی</a><br>  
-<a style="padding-right:2em" href=#setScreenFlowsAutoFill>۴.۱۳. فعال کردن فرآیند نگهداری حرکت کاربر بین صفحات مختلف در اپلیکیشن</a><br>  
-<a style="padding-right:2em" href=#setDefaultTracker>۴.۱۴. مشخص کردن Pre-installed Tracker</a><br>  
+<a style="padding-right:2em" href=#newEvent>۴.۱۲. رویداد سفارشی</a><br> 
+<a style="padding-right:2em" href=#newRevenue>۴.۱۳. رویداد درآمدی</a><br>
+<a style="padding-right:2em" href=#setScreenFlowsAutoFill>۴.۱۴. فعال کردن فرآیند نگهداری حرکت کاربر بین صفحات مختلف در اپلیکیشن</a><br>  
+<a style="padding-right:2em" href=#setDefaultTracker>۴.۱۵. مشخص کردن Pre-installed Tracker</a><br>  
   
   
   
@@ -307,7 +308,31 @@
   
 ورودی این تابع از جنس String است<br>  
 
-<h3 id=setScreenFlowsAutoFill>۱۳. نگهداری حرکات کاربر در صفحات مختلف در اپلیکیشن</h3>
+
+<h3 id=newRevenue>۱۳. ساختن رویداد درآمدی</h3>
+با استفاده از این تابع می‌توانید یک رویداد درآمدی بسازید. برای این کار شما در ابتدا باید در داشبورد متریکس از قسمت مدیریت رخدادها، رخداد موردنظر خود را ثبت کنید و نامک (slug) آن را بعنوان نام رخداد در sdk استفاده کنید.<br>
+این تابع را به صورت زیر می‌توانید صدا بزنید:<br>
+۱. یک رویداد سفارشی که فقط یک نامک مشخص دارد و آن را از داشبورد متریکس میگیرد، بسازید:<br>
+
+<div dir=ltr>
+
+    Metrix.NewRevenue("my_event_slug", 12000, 0, "2");
+</div>
+
+ورودی اول همان نامکی است که از داشبورد دریافت می‌کنید.<br>
+دومین وروی تابع یک مقدار است که همان مقدار درآمد است.<br>
+سومین ورودی واحد پول این رخداد است که در صورت قرار ندادن مقدار آن واحد پیشفرض ریال است در زیر مقادیر آن را میتوانید ببینید.<br>
+۱- `0` ریال  
+  
+۲- `1` دلار  
+  
+۳- `2` یورو  
+
+ورودی چهارم که به صورت دلخواه است میتواند اولویت درآمدی شما باشد.<br>
+<br>
+
+
+<h3 id=setScreenFlowsAutoFill>۱۴. نگهداری حرکات کاربر در صفحات مختلف در اپلیکیشن</h3>
 
 با اضافه کردن تابع زیر صفحات خود میتوانید از حرکت کاربر بین صفحات اطلاع پیدا کنید:<br>
 <div dir=ltr>
@@ -315,7 +340,7 @@
     Metrix.ScreenDisplayed("First Screen");
 </div>
   
-<h3 id=setDefaultTracker>۱۴. مشخص کردن Pre-installed Tracker</h3>  
+<h3 id=setDefaultTracker>۱۵. مشخص کردن Pre-installed Tracker</h3>  
   
 با استفاده از این تابع می‌توانید با استفاده از یک `trackerToken` که از پنل آن را دریافت می‌کنید، برای همه‌ی رویدادها یک `tracker` پیش‌فرض را قرار دهید:<br>  
 <div dir=ltr>  
