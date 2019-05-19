@@ -75,8 +75,13 @@ compileOptions {
         release {
             minifyEnabled **MINIFY_RELEASE**
             useProguard **PROGUARD_RELEASE**
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD****SIGNCONFIG**
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
+            **SIGNCONFIG**
         }
-    }**PACKAGING_OPTIONS****SPLITS**
+    }
+    **PACKAGING_OPTIONS**
+    **SPLITS**
 **BUILT_APK_LOCATION**
-}**SPLITS_VERSION_CODE****SOURCE_BUILD_SETUP**
+}
+**SPLITS_VERSION_CODE**
+**SOURCE_BUILD_SETUP**
