@@ -299,7 +299,7 @@ Make a custom event that has only one specified name:<br>
   
 <div dir=ltr>  
   
-    Metrix.NewEvent(“my_event_slug");    
+    Metrix.NewEvent(“abc123");    
 </div>  
   
 The input of this function is String.<br>  
