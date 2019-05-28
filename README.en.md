@@ -318,6 +318,7 @@ If your users can generate revenue by tapping on advertisements or making in-app
 The first parameter is the slug you get from the dashboard. <br>
 The second parameter is the amount of revenue. <br>
 The third parameter is the currency of this event. If you do not set the value, Rial is be considered as default value. You can see below its values: <br>
+
 1- `0` Rial
   
 2- `1` Dollars
