@@ -68,9 +68,9 @@ Open your project in the Unity Editor and navigate to Assets → Import Package 
 4. If you are using Proguard, add these lines to your `Proguard` file: 
   
 <div dir=ltr>  
+      
     #Unity Player
     -keep class com.unity3d.player.** { *; }
-
 
     -keepattributes Signature
     -keepattributes *Annotation*
