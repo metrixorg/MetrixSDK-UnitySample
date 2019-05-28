@@ -2,6 +2,8 @@
 
 <div dir="rtl">  
   
+*این مطلب را در زبان‌های دیگر بخوانید: [فارسی](README.md), [English](README.en.md).*
+  
 <h2>فهرست</h2>  
 <a href=#project_setup>۱. تنظیمات اولیه در پروژه</a><br>  
 <a href=#install_referrer>۲. دریافت اطلاعات Install Referrer</a><br>
