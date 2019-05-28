@@ -175,7 +175,7 @@ The Google Play Store `INSTALL_REFERRER` intent should be captured with a broadc
 <h3 id=application_setup>Initial configuration in the app</h3>  
   
 You need to initialize the Metrix SDK in `onCreate` method of your `Application`. If you do not already have a class `Application` in your project, create this class as below:<br>  
-1. Initialize the Metrix according to the codes below: <br>  
+Initialize the Metrix according to the codes below: <br>  
 
 <div dir=ltr>  
 
@@ -184,11 +184,7 @@ You need to initialize the Metrix SDK in `onCreate` method of your `Application`
 
 
 Replace `APP_ID` with your application id. You can find that in your Metrix's dashboard.  
-  
-<h3 id=about_application_class>About the application class and initialization in this class</h3>  
-  
-The Android gives developers the ability to run methods before the creation of any `activity` in the application class. Because counting the `session`, gathering `screen-flows` between `activities` and many other features of the SDK required them to work properly.  
-  
+    
 <h2 id=methods>Additional features</h2>  
   
 <h3 id=session_event_description>Explain the concepts of event and session</h3>  
