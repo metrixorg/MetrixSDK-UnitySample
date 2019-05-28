@@ -175,11 +175,14 @@ The Google Play Store `INSTALL_REFERRER` intent should be captured with a broadc
 <h3 id=application_setup>Initial configuration in the app</h3>  
   
 You need to initialize the Metrix SDK in `onCreate` method of your `Application`. If you do not already have a class `Application` in your project, create this class as below:<br>  
-1. Initialize the Metrix according to the codes below:<br>  
+1. Initialize the Metrix according to the codes below: <br>  
+
 <div dir=ltr>  
+
     Metrix.Initialize("APP_ID");
 </div>  
-  
+
+
 Replace `APP_ID` with your application id. You can find that in your Metrix's dashboard.  
   
 <h3 id=about_application_class>About the application class and initialization in this class</h3>  
