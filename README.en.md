@@ -156,8 +156,10 @@ In order to correctly attribute an install of your app to its source, Metrix nee
 
 
 <h3 id=google_play_store_intent>Google Play Store intent</h3>
-The Google Play Store  `INSTALL_REFERRER`  intent should be captured with a broadcast receiver. If you are  **not using your own broadcast receiver**  to receive the  `INSTALL_REFERRER`  intent, add the following  `receiver`  tag inside the  `application` tag in your  `AndroidManifest.xml`.
-```xml
+
+The Google Play Store `INSTALL_REFERRER` intent should be captured with a broadcast receiver. If you are  **not using your own broadcast receiver**  to receive the  `INSTALL_REFERRER`  intent, add the following  `receiver`  tag inside the  `application` tag in your  `AndroidManifest.xml`.
+
+```
 <receiver
     android:name="ir.metrix.sdk.MetrixReferrerReceiver"
     android:permission="android.permission.INSTALL_PACKAGES"
@@ -167,6 +169,7 @@ The Google Play Store  `INSTALL_REFERRER`  intent should be captured with a broa
     </intent-filter>
 </receiver>
 ```
+
 <h2 id=integration>Implement the SDK in your project</h2>  
   
 <h3 id=application_setup>Initial configuration in the app</h3>  
