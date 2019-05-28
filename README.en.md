@@ -295,7 +295,7 @@ By this function, you can find the current session number:<br>
   
 You can use Metrix to track any event in your app. Suppose you want to track every tap on a button. You would have to create a new event slug in the Events Management section of your dashboard. Let's say that event slug is `abc123`. In your button's onClick method you could then add the following lines to track the click.  
 <br>  
-You can call this function in two ways:<br>  
+You can call this function in this way:<br>  
 Make a custom event that has only one specified name:<br>  
   
 <div dir=ltr>  
