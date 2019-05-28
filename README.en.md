@@ -191,9 +191,7 @@ There are three types of events in the Metrix:<br>
 <b>1. Session Start:</b> The time of start a session.<br>  
 <b>2. Session Stop:</b> The time of stop a session.<br>  
 <b>3. Custom:</b> Depending on your application logic and the interactiion that the user has with your app, you can create and send custom events as below:<br>  
-  
-<b>Tip:</b> To use library facilities and call the methods provided by the SDK, you must get `MetrixClient` using `getInstance` and then choose your desired method.<br>  
-<br>  
+
   
 <h3 id=enableLocationListening>Enable location listening</h3>  
 You can declare to Metrix to send information about the location of the user using the following functions. (In order to these method work properly, the optional permissions must be enabled) <br>  
