@@ -175,7 +175,7 @@ The Google Play Store `INSTALL_REFERRER` intent should be captured with a broadc
 <h3 id=application_setup>Initial configuration in the app</h3>  
   
 You need to initialize the Metrix SDK in `onCreate` method of your `Application`. If you do not already have a class `Application` in your project, create this class as below:<br>  
-Initialize the Metrix according to the codes below: <br>  
+Initialize Metrix according to the code below: <br>  
 
 <div dir=ltr>  
 
@@ -187,16 +187,16 @@ Replace `APP_ID` with your application id. You can find that in your Metrix's da
     
 <h2 id=methods>Additional features</h2>  
   
-<h3 id=session_event_description>Explain the concepts of event and session</h3>  
-In each interaction that the user has with the app, the Metrix sends this interaction to the server as a <b>event</b>. In Metrix, <b>session</b> means that a specific timeframe that the user interacts with the app.<br>  
-There are three types of events in the Metrix:<br>  
-<b>1. Session Start:</b> The time of start a session.<br>  
-<b>2. Session Stop:</b> The time of stop a session.<br>  
+<h3 id=session_event_description>Events and sessions</h3>  
+In each interaction that the user has with the app, Metrix sends this interaction to the server as an <b>event</b>. In Metrix, a <b>session</b> is a specific timeframe during which the user interacted with the app.<br>  
+There are three types of events in Metrix:<br>  
+<b>1. Session Start:</b> The time a session starts.<br>  
+<b>2. Session Stop:</b> The time of a session ends.<br>  
 <b>3. Custom:</b> Depending on your application logic and the interactiion that the user has with your app, you can create and send custom events as below:<br>  
 
   
 <h3 id=enableLocationListening>Enable location listening</h3>  
-You can declare to Metrix to send information about the location of the user using the following functions. (In order to these method work properly, the optional permissions must be enabled) <br>  
+Using the following functions, you can inform Metrix that you wish to send information about the location of the user (In order for these methods to work properly, the optional permissions explained earlier must be enabled). <br>
 <div dir=ltr>  
   
     Metrix.EnableLocationListening();  
@@ -205,15 +205,14 @@ You can declare to Metrix to send information about the location of the user usi
 </div>  
   
 <h3 id=setEventUploadThreshold>Limitation in number of events to upload</h3>  
-Using the following function, you can specify that each time the number of your buffered events reaches the threshold, SDK should send them to the server:<br>  
-<div dir=ltr>  
+Using the following function, you can specify that each time the number of your buffered events reaches the threshold, the Metrix SDK should send them to the server:<div dir=ltr>  
   
     Metrix.SetEventUploadThreshold(50);   
 </div>  
 (The default value is 30 events.)<br>  
   
 <h3 id=setEventUploadMaxBatchSize>Limitation in number of events to send per request</h3>  
-Using this function, you can specify the maximum number of outcoming events per request as shown below:<br>  
+Using this function, you can specify the maximum number of out-going events per request as shown below:<br>  
 <div dir=ltr>  
 
       Metrix.SetEventUploadMaxBatchSize(100);  
@@ -221,7 +220,7 @@ Using this function, you can specify the maximum number of outcoming events per 
 (The default value is 100 events.)<br>  
   
 <h3 id=setEventMaxCount>Limitation in number of events to buffer on the device</h3>  
-Using the following function, you can specify how much the maximum number of buffered events is in the SDK (for example, if the user device lost its internet connection, the events will be stored in the library as the amount of you specify) and if the number of buffered events in the library pass this amount. Old events are not kept and destroyed by SDK:<br>  
+Using the following function, you can specify the maximum number of events that are buffered in the SDK (for example, if the user's device loses internet connection, the events will be buffered in the library until there is a chance to send the events and empty the buffer) and if the number of buffered events in the library passes this amount, old events are destroyed by SDK to make space for new events:<br>
 <div dir=ltr>  
   
     Metrix.SetEventMaxCount(1000);  
@@ -229,7 +228,7 @@ Using the following function, you can specify how much the maximum number of buf
 (The default value is 100 events.)<br>  
   
 <h3 id=setEventUploadPeriodMillis>The time interval for sending events</h3>  
-By using this function, you can specify that how long the request for sending events should be sent: <br>  
+By using this function, you can specify the timeout period of requests for sending events: <br>  
 <div dir=ltr>  
   
     Metrix.SetEventUploadPeriodMillis(30000);   
@@ -237,7 +236,7 @@ By using this function, you can specify that how long the request for sending ev
 (The default value is 30 seconds.)<br>  
   
 <h3 id=setSessionTimeoutMillis>The session timeout</h3>  
-Using this function, you can specify the limit of session lengthes in your application. For example, if the value of this value is 10,000, if the user interacts with the application in 70 seconds, the Metrix calculates this interaction in seven sessions.<br>  
+Using this function, you can specify the limit of session length in your application in unit of miliseconds. For example, if this value is 10,000 and the user interacts with the application for 70 seconds, Metrix calculates this interaction as seven sessions.<br>  
 <div dir=ltr>  
   
     Metrix.SetSessionTimeoutMillis(1800000);  
@@ -245,7 +244,7 @@ Using this function, you can specify the limit of session lengthes in your appli
 (The default value is 30 minutes.)<br>  
 
 <h3 id=enableLogging>Log management</h3>  
-Note that setting the value of this value to `false` during the release of your application:<br>  
+Note that you should set this value to `false` before the release of your application:<br>  
 <div dir=ltr>  
   
     Metrix.EnableLogging(true);  
@@ -276,7 +275,7 @@ The value of `Log Level` can be one of the following:
 </div>
 
 <h3 id=setFlushEventsOnClose>Flush all events</h3>  
-Using this function, you can specify that when the application is closed, all events buffered in the device, should be sent or not:  
+Using this function, you can specify whether when the application is closed, all events buffered in the device, should be sent or not:  
 <br>  
 <div dir=ltr>  
   
@@ -309,7 +308,7 @@ The input of this function is String.<br>
 
 <h3 id=newRevenue>Track Revenue</h3>  
 
-If your users can generate revenue by tapping on advertisements or making in-app purchases, you can track those revenues too with events. Let's say a tap is worth 12000 Rial. You can also add an optional order ID to avoid tracking duplicate revenues. By doing so, the last ten order IDs will be remembered and revenue events with duplicate order IDs are skipped. This is especially useful for tracking in-app purchases. You can see an  example below.
+If your users can generate revenue by tapping on advertisements or making in-app purchases, you can track those revenues too with events. You can also add an optional order ID to avoid tracking duplicate revenues. By doing so, the last ten order IDs will be remembered and revenue events with duplicate order IDs are skipped. This is especially useful for tracking in-app purchases. You can see an example below where a tap is worth 12,000 IRR:
 
 <div dir=ltr>
 
