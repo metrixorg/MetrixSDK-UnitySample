@@ -30,7 +30,7 @@
   
 <h2 id=project_setup>Basic integration</h2>  
   
-1. Download the latest version from [our releases page] (https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.9.1.unitypackage).
+1. Download the latest version from [our releases page](https://storage.backtory.com/metricx/sdk-unity/MetrixSDK-v0.9.1.unitypackage).
 Open your project in the Unity Editor and navigate to Assets → Import Package → Custom Package and select the downloaded Unity package file.
   
 2. Add the following libraries to the `dependencies` section of your `Asset/Plugins/Android/mainTemplate.gradle` file:  
