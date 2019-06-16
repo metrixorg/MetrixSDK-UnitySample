@@ -2,6 +2,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_IOS && !UNITY_EDITOR
+using System.Runtime.InteropServices;
+#endif
+
 
 namespace MetrixSDK {
 
@@ -11,12 +15,22 @@ namespace MetrixSDK {
 		#if UNITY_ANDROID && !UNITY_EDITOR
 		private static AndroidJavaClass metrix;
 		#endif
+
+
+        #if UNITY_IOS && !UNITY_EDITOR
+        [DllImport ("__Internal")]
+        private static extern void _MXInitialize(string appkey);
+        [DllImport ("__Internal")]
+        private static extern void _MXEvent(string slug);
+        #endif
       
 		public static void Initialize(string apiKey)
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
 			setJavaObject();
 			metrix.CallStatic("initialize", apiKey);
+            #elif UNITY_IOS && !UNITY_EDITOR
+            _MXInitialize(apiKey);
             #endif
         }
 
@@ -112,6 +126,8 @@ namespace MetrixSDK {
         {
             #if UNITY_ANDROID && !UNITY_EDITOR
 			metrix.CallStatic("newEvent", eventName);
+            #elif UNITY_IOS && !UNITY_EDITOR
+            _MXEvent(eventName);
             #endif
         }
 
