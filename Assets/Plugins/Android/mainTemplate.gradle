@@ -2,13 +2,13 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
-    }
+        classpath 'com.android.tools.build:gradle:3.2.0'
+**BUILD_SCRIPT_DEPS**}
 }
 
 allprojects {
@@ -22,29 +22,20 @@ allprojects {
 }
 
 apply plugin: 'com.android.application'
+**APPLY_PLUGINS**
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
-    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
-    implementation 'com.android.installreferrer:installreferrer:1.0'
-    implementation 'com.google.android.gms:play-services-analytics:16.0.7'
-
-   
 **DEPS**}
 
 android {
-
-compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
-    }
-    
     compileSdkVersion **APIVERSION**
     buildToolsVersion '**BUILDTOOLS**'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
         minSdkVersion **MINSDKVERSION**
@@ -62,7 +53,7 @@ compileOptions {
     }
 
     aaptOptions {
-        noCompress '.unity3d', '.ress', '.resource', '.obb'**STREAMING_ASSETS**
+        noCompress = ['.unity3d', '.ress', '.resource', '.obb'**STREAMING_ASSETS**]
     }**SIGN**
 
     buildTypes {
@@ -75,13 +66,19 @@ compileOptions {
         release {
             minifyEnabled **MINIFY_RELEASE**
             useProguard **PROGUARD_RELEASE**
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD**
-            **SIGNCONFIG**
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-unity.txt'**USER_PROGUARD****SIGNCONFIG**
+        }
+    }**PACKAGING_OPTIONS****SPLITS**
+**BUILT_APK_LOCATION**
+    bundle {
+        language {
+            enableSplit = false
+        }
+        density {
+            enableSplit = false
+        }
+        abi {
+            enableSplit = true
         }
     }
-    **PACKAGING_OPTIONS**
-    **SPLITS**
-**BUILT_APK_LOCATION**
-}
-**SPLITS_VERSION_CODE**
-**SOURCE_BUILD_SETUP**
+}**SPLITS_VERSION_CODE****REPOSITORIES****SOURCE_BUILD_SETUP**

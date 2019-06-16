@@ -14,16 +14,6 @@
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
     </activity>
 
-    
-    <receiver
-        android:name="ir.metrix.sdk.MetrixReferrerReceiver"
-        android:permission="android.permission.INSTALL_PACKAGES"
-        android:exported="true" >
-        <intent-filter>
-            <action android:name="com.android.vending.INSTALL_REFERRER" />
-        </intent-filter>
-    </receiver>
-
-  </application>
+   </application>
   <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="26" />
 </manifest> 
