@@ -203,6 +203,12 @@ namespace MetrixSDK {
             metrix.CallStatic("screenDisplayed", screenName);
             #endif
         }
+        public static void SetAppSecret(long secretId,long info1, long info2, long info3, long info4)
+        {
+            #if UNITY_ANDROID && !UNITY_EDITOR
+            metrix.CallStatic("setAppSecret", secretId,info1,info2,info3,info4);
+            #endif
+        }
 
         public static bool IsScreenFlowsAutoFill()
         {
