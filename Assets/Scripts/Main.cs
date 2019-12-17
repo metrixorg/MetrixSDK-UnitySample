@@ -11,9 +11,19 @@ public class Main : MonoBehaviour {
 
 	void Start() 
 	{
-        // Use your MetricX key for initialization
-        Metrix.Initialize ("hqsogeujhbrwube");
-		Metrix.EnableLogging(true);
+        MetrixConfig metrixConfig = new MetrixConfig("hqsogeujhbrwube");
+        metrixConfig.SetAppSecret(4, 232, 45455, 5555554, 556665);
+		metrixConfig.SetStore("caffee");
+        metrixConfig.SetFirebaseAppId("1:730143097783:android:227c981a44d0492eaa9e32");
+        Metrix.OnCreate(metrixConfig);
+        Dictionary<string, string> dict = new Dictionary<string, string>()
+                                            {
+                                                {"1","One"},
+                                                {"2", "Two"},
+                                                {"3","Three"}
+                                            };
+        Metrix.AddUserAttributes(dict);
+
     }
 
 	public void SendEvent()
