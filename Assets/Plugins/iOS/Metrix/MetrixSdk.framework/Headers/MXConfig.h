@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "MXLogger.h"
+#import "MXAttribution.h"
 #import "MXEventSuccess.h"
 #import "MXEventFailure.h"
 #import "MXSessionSuccess.h"
@@ -17,6 +18,14 @@
 @protocol MetrixDelegate
 
 @optional
+/**
+ * @brief Optional delegate method that gets called when the attribution information changed.
+ *
+ * @param attribution The attribution information.
+ *
+ * @note See MXAttribution for details.
+ */
+- (void)metrixAttributionChanged:(nullable MXAttribution *)attribution;
 
 /**
  * @brief Optional delegate method that gets called when an event is tracked with success.

@@ -2,6 +2,7 @@
 #import <MetrixSdk/MXCustomEvent.h>
 #import "UnityAppController.h"
 #import <Foundation/Foundation.h>
+#import <MetrixSdk/MXCurrency.h>
 
 
 // Converts NSString to C style string by way of copy (Mono will free it)
@@ -33,7 +34,8 @@ void MXSafeUnitySendMessage(const char *methodName, const char *param) {
 
 - (void) initializeWithAppKey:(NSString* )appkey;
 - (void) newEvent:(NSString* )slug;
-
+- (void) trackRevenue : (NSString *)slug  withValue:(NSNumber *)value currency:(NSString *)currency orderId:(NSString *)orderId;
+    
 @end
 
 @implementation MetrixUnityController
@@ -52,9 +54,20 @@ void MXSafeUnitySendMessage(const char *methodName, const char *param) {
 
         MXConfig *metrixConfig = [MXConfig configWithAppId:appkey
                                            environment:MXEnvironmentProduction];
-    
+        [metrixConfig setDelegate:self];
+                         
     [Metrix appDidLaunch:metrixConfig];
 
+}
+
+- (void)metrixSessionTrackingSucceeded:(MXSessionSuccess *)sessionSuccessResponseData {
+
+     MXSafeUnitySendMessage(MX_MakeStringCopy(@"OnReceiveUserIdListener"),MX_MakeStringCopy([sessionSuccessResponseData mxid]));
+}
+
+
+- (void)metrixAttributionChanged:(MXAttribution *)attribution {
+    
 }
 
 - (void) newEvent:(NSString* )slug{
@@ -62,6 +75,25 @@ void MXSafeUnitySendMessage(const char *methodName, const char *param) {
     MXCustomEvent *event = [MXCustomEvent newEvent:slug attributes:nil metrics:nil];
     [Metrix trackCustomEvent:event];
 }
+
+
+
+
+- (void) trackRevenue : (NSString *)slug  withValue:(NSNumber *)value currency:(NSString *)currency orderId:(NSString *)orderId {
+    
+    MXCurrency cur = IRR;
+    
+    if ([currency isEqualToString: @"IRR"]) {
+        cur = IRR;
+    } else if([currency isEqualToString: @"USD"]) {
+        cur = USD;
+    }else if([currency isEqualToString: @"EUR"]) {
+        cur = EUR;
+    }
+    
+    [Metrix trackRevenue:slug withValue:value currency:cur orderId:orderId];
+    
+  }
 
 
 
@@ -78,4 +110,9 @@ extern "C" {
         [[MetrixUnityController sharedInstance] newEvent:MX_GetStringParam(slug)];
     }
     
+    void _MXTrackRevenue (char *slug, double value, char *currency,   char *orderId) {
+    
+    [[MetrixUnityController sharedInstance] trackRevenue:MX_GetStringParam(slug) withValue:[NSNumber numberWithDouble:value] currency:MX_GetStringParam(currency) orderId:MX_GetStringParam(orderId)];
+    
+  }
 }

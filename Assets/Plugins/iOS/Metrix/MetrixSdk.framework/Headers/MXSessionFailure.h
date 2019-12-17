@@ -20,7 +20,7 @@
 /**
  * @brief Metrix identifier of the device.
  */
-@property (nonatomic, copy, nullable) NSString *adid;
+@property (nonatomic, copy, nullable) NSString *mxid;
 
 /**
  * @brief Information whether sending of the package will be retried or not.

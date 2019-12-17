@@ -8,6 +8,7 @@
 //
 
 #import "MXConfig.h"
+#import "MXCurrency.h"
 
 @class MXCustomEvent;
 
@@ -61,10 +62,22 @@ extern NSString * __nonnull const MXEnvironmentProduction;
 + (void)trackCustomEvent:(MXCustomEvent *)event;
 
 /**
+ * @brief Tell Metrix that a particular revenue event has happened.
+ *
+ */
++ (void)trackRevenue:(NSString *)slug withValue:(NSNumber *)value currency:(MXCurrency)currency orderId:(NSString *)orderId;
+
+/**
  * @brief Tell Metrix that a particular event has happened.
  *
  */
 + (void)trackScreen:(NSString *)screenName;
+
+/**
+ * @brief request to get attribution info.
+ *
+ */
++ (void)requestAttribution;
 
 /**
  * @brief Enable or disable the metrix SDK. This setting is saved for future sessions.
@@ -105,6 +118,16 @@ extern NSString * __nonnull const MXEnvironmentProduction;
 + (nullable NSString *)mxid;
 
 /**
+ * @brief Get current attribution for the user.
+ *
+ * @note Attribution information is available only after installation has been successfully tracked
+ *       and attribution information arrived after that from the backend.
+ *
+ * @return Current attribution value for the user.
+ */
++ (nullable MXAttribution *)attribution;
+
+/**
  * @brief Get current Metrix SDK version string.
  *
  * @return Metrix SDK version string (iosX.Y.Z).
@@ -129,7 +152,11 @@ extern NSString * __nonnull const MXEnvironmentProduction;
 
 - (void)trackCustomEvent:(nullable MXCustomEvent *)event;
 
+- (void)trackRevenue:(NSString *)slug withValue:(NSNumber *)value currency:(MXCurrency)currency orderId:(NSString *)orderId;
+
 - (void)trackScreen:(NSString *)screenName;
+
+- (void)requestAttribution;
 
 - (void)setEnabled:(BOOL)enabled;
 
@@ -144,6 +171,8 @@ extern NSString * __nonnull const MXEnvironmentProduction;
 - (nullable NSString *)mxid;
 
 - (nullable NSString *)idfa;
+
+- (nullable MXAttribution *)attribution;
 
 - (nullable NSString *)sdkVersion;
 
